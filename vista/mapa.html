@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAV - Mapa en Tiempo Real</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin="anonymous" />
+          <link rel="stylesheet" href="../include/css/mapa.css">
+          <link rel="stylesheet" href="../include/css/dashboard.css">
+</head>
+<body>
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="gps-loader">
+                <i class="fas fa-satellite-dish"></i>
+                <div class="gps-signals">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <p>Conectando...</p>
+        </div>
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="dashboard.html" class="nav-item"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="mapa.html" class="nav-item active"><i class="fas fa-map-marker-alt"></i> Rastreo</a>
+                <a href="#" class="nav-item"><i class="fas fa-route"></i> Recorridos</a>
+                <a href="#" class="nav-item"><i class="fas fa-envelope"></i> Mensajes</a>
+                <a href="#" class="nav-item"><i class="fas fa-file-alt"></i> Informes</a>
+                <a href="#" class="nav-item"><i class="fas fa-map"></i> Rutas</a>
+                <a href="#" class="nav-item"><i class="fas fa-truck-pickup"></i> Remolques</a>
+                <a href="#" class="nav-item"><i class="fas fa-users"></i> Conductores</a>
+            </div>
+            <div class="nav-right">
+                <span class="user-info">Weapon</span>
+            </div>
+        </nav>
+    <div class="app-container">
+        <nav class="sidebar animate-slideIn">
+            <div class="logo">SAV</div>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Buscar ubicación..." class="search-input">
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            <div class="vehicle-list">
+                <h3>Vehículos Activos</h3>
+                <div id="activeVehicles" class="vehicle-cards">
+                    <!-- Vehicle cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+            <div class="route-info">
+                <h3>Información de Ruta</h3>
+                <div id="routeDetails" class="route-details">
+                    <div class="info-card">
+                        <span class="info-label">Distancia</span>
+                        <span id="distance" class="info-value">0 km</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">Tiempo Est.</span>
+                        <span id="time" class="info-value">0 min</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">Tráfico</span>
+                        <span id="traffic" class="info-value">Normal</span>
+                    </div>
+                </div>
+                <div id="routeAlternatives" class="route-alternatives">
+                    <!-- Alternative routes will be inserted here -->
+                </div>
+            </div>
+        </nav>
+
+        <main class="map-container">
+            <div id="map" class="map animate-fadeIn"></div>
+            <div class="controls">
+                <button id="centerMap" class="control-btn animate-scaleIn" title="Centrar Mapa">
+                    <span class="icon">📍</span>
+                </button>
+                <button id="toggleTraffic" class="control-btn animate-scaleIn" title="Ver Tráfico">
+                    <span class="icon">🚦</span>
+                </button>
+                <button id="toggleNotifications" class="control-btn animate-scaleIn" title="Notificaciones">
+                    <span class="icon">🔔</span>
+                </button>
+            </div>
+            <div id="notifications" class="notifications-panel">
+                <!-- Notifications will be inserted here -->
+            </div>
+        </main>
+
+        <div id="routePanel" class="route-panel">
+            <div class="route-header">
+                <h3>Planificador de Ruta</h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="route-inputs">
+                <input type="text" id="startPoint" placeholder="Punto de inicio" class="route-input">
+                <input type="text" id="endPoint" placeholder="Destino" class="route-input">
+                <button id="calculateRoute" class="route-btn">Calcular Ruta</button>
+            </div>
+        </div>
+    </div>
+    <script src="mapa.js" defer></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin="anonymous"></script>
+  
+            <script>// Initialize map
+                const map = L.map("map").setView([19.0522, -104.3158], 13)
+                
+                // Use OpenStreetMap's official tile server with proper attribution
+                L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                  maxZoom: 19,
+                  attribution:
+                    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a>',
+                }).addTo(map)
+                </script>
+
+</body>
+</html>
+

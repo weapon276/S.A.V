@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAV - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../include/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="gps-loader">
+                <i class="fas fa-satellite-dish"></i>
+                <div class="gps-signals">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <p>Conectando...</p>
+        </div>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="#" class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="mapa.html" class="nav-item"><i class="fas fa-map-marker-alt"></i> Rastreo</a>
+            <a href="#" class="nav-item"><i class="fas fa-route"></i> Recorridos</a>
+            <a href="#" class="nav-item"><i class="fas fa-envelope"></i> Mensajes</a>
+            <a href="#" class="nav-item"><i class="fas fa-file-alt"></i> Informes</a>
+            <a href="#" class="nav-item"><i class="fas fa-map"></i> Rutas</a>
+            <a href="#" class="nav-item"><i class="fas fa-truck-pickup"></i> Remolques</a>
+            <a href="#" class="nav-item"><i class="fas fa-users"></i> Conductores</a>
+        </div>
+        <div class="nav-right">
+            <span class="user-info">Weapon</span>
+        </div>
+    </nav>
+
+    <div class="date-filter">
+        <div class="filter-group">
+            <button class="filter-btn active">Hoy</button>
+            <button class="filter-btn">Ayer</button>
+            <button class="filter-btn">Semana</button>
+            <button class="filter-btn">Mes</button>
+        </div>
+        <div class="date-range">
+            <input type="date" value="2025-02-09">
+            <span>-</span>
+            <input type="date" value="2025-02-15">
+            <button class="apply-btn">Aplicar</button>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Estado de dispositivos -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Estado de dispositivos</h3>
+                <span class="badge">DATOS EN LÍNEA</span>
+            </div>
+            <div class="card-content">
+                <canvas id="deviceStatusChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Estado de movimiento -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Estado de movimiento</h3>
+                <span class="badge">DATOS EN LÍNEA</span>
+            </div>
+            <div class="card-content">
+                <canvas id="movementStatusChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Consumido por FLS -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Consumido por FLS</h3>
+                <span class="badge">DATOS EN LÍNEA</span>
+            </div>
+            <div class="card-content">
+                <canvas id="consumptionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Estado de conexión -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Estado de conexión</h3>
+                <span class="badge">DATOS EN LÍNEA</span>
+            </div>
+            <div class="card-content">
+                <canvas id="connectionStatusChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Unidades con mayor kilometraje -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Unidades con mayor kilometraje</h3>
+                <div class="legend">
+                    <span class="legend-item">0 km</span>
+                    <span class="legend-item">150 km</span>
+                    <span class="legend-item">300 km</span>
+                    <span class="legend-item">600 km</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <canvas id="mileageBarChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Kilometraje -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Kilometraje</h3>
+                <span class="badge">531 km</span>
+            </div>
+            <div class="card-content">
+                <canvas id="mileageLineChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="../include/js/dashboard.js"></script>
+</body>
+</html>
+

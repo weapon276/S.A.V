@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAV - Servicios Auxiliares Viales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="include/css/animado.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">SAV</h1>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="container">
+            <h2 class="hero-title">
+                Servicios Auxiliares Viales
+                <span id="text-animation" class="benefit-text"></span>
+            </h2>
+            <p class="hero-subtitle">Soluciones de auxilio vial para el transporte terrestre en Manzanillo</p>
+            <button id="auxilio-btn" class="cta-button">
+                <i class="fas fa-phone-alt"></i> Solicitar Auxilio
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="servicios" class="services">
+            <h3 class="section-title">Nuestros Servicios</h3>
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-clock service-icon"></i>
+                    <h4>Asistencia 24/7</h4>
+                    <p>Disponibles en cualquier momento para atender sus emergencias viales.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-traffic-light service-icon"></i>
+                    <h4>Gestión de Tráfico</h4>
+                    <p>Sistema en tiempo real para optimizar rutas y reducir congestiones.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bell service-icon"></i>
+                    <h4>Notificaciones</h4>
+                    <p>Alertas oportunas sobre cambios en operaciones portuarias y viales.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="por-que-elegirnos" class="why-us">
+            <h3 class="section-title">¿Por qué elegirnos?</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Respuesta rápida y eficiente en emergencias viales</li>
+                <li><i class="fas fa-check-circle"></i> Cobertura completa en el municipio de Manzanillo</li>
+                <li><i class="fas fa-check-circle"></i> Tecnología de punta para la gestión de tráfico y notificaciones</li>
+            </ul>
+        </section>
+    </main>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h3 class="section-title">Contáctanos</h3>
+            <form id="contact-form" class="contact-form">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <textarea placeholder="Mensaje" rows="4" required></textarea>
+                <button type="submit" class="submit-button">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SAV - Servicios Auxiliares Viales. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="include/js/script.js"></script>
+</body>
+</html>
