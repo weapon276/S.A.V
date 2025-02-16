@@ -21,37 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Animated counter for years of experience
-  const counterElement = document.createElement("div")
-  counterElement.className = "experience-counter"
-  counterElement.textContent = "0 años de experiencia"
-  document.querySelector("#por-que-elegirnos").appendChild(counterElement)
 
-  const animateCounter = (target, duration) => {
-    let start = 0
-    const increment = target / (duration / 16)
-    const timer = setInterval(() => {
-      start += increment
-      counterElement.textContent = `${Math.floor(start)} años de experiencia`
-      if (start >= target) {
-        clearInterval(timer)
-        counterElement.textContent = `${target} años de experiencia`
-      }
-    }, 16)
-  }
-
-  // Trigger animation when element is in view
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(10, 2000) // 10 years, 2 seconds duration
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.5 },
-  )
 
   observer.observe(counterElement)
 

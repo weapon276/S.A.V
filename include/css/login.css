@@ -255,3 +255,82 @@ body {
   }
 }
 
+/* Agregar estilos para alertas */
+.alert {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.alert-error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef5350;
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #66bb6a;
+}
+
+/* Estilos para el select de tipo de usuario */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+/* Estilos para campos con error */
+.form-group.error input,
+.form-group.error select {
+  border-color: var(--danger-color);
+}
+
+.form-group.error .error-message {
+  color: var(--danger-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Mejoras en la accesibilidad */
+.auth-button:focus,
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.4);
+}
+
+/* Indicador de fortaleza de contraseña */
+.password-strength {
+  height: 4px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background-color: var(--border-color);
+  overflow: hidden;
+}
+
+.password-strength-meter {
+  height: 100%;
+  width: 0;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strength-weak {
+  width: 33.33%;
+  background-color: var(--danger-color);
+}
+
+.strength-medium {
+  width: 66.66%;
+  background-color: var(--warning-color);
+}
+
+.strength-strong {
+  width: 100%;
+  background-color: var(--success-color);
+}
+

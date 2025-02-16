@@ -1,91 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const loadingOverlay = document.getElementById("loading-overlay")
-    const loginForm = document.getElementById("loginForm")
-    const registerForm = document.getElementById("registerForm")
-  
-    // Function to show loading overlay
-    function showLoading() {
-      loadingOverlay.classList.add("active")
-    }
-  
-    // Function to hide loading overlay
-    function hideLoading() {
-      loadingOverlay.classList.remove("active")
-    }
-  
-    // Function to simulate loading delay
-    function simulateLoading(callback, duration = 2000) {
+  const loadingOverlay = document.getElementById("loading-overlay")
+  const loginForm = document.getElementById("loginForm")
+  const registerForm = document.getElementById("registerForm")
+
+  // Función para mostrar el overlay de carga
+  function showLoading() {
+    loadingOverlay.classList.add("active")
+  }
+
+  // Función para ocultar el overlay de carga
+  function hideLoading() {
+    loadingOverlay.classList.remove("active")
+  }
+
+  // Validación del formulario de registro
+  if (registerForm) {
+    registerForm.addEventListener("submit", (e) => {
+      const password = document.getElementById("contrasena").value
+      const confirmPassword = document.getElementById("confirmar_contrasena").value
+      const telefono = document.getElementById("telefono").value
+
+      // Validar contraseña
+      if (password.length < 8) {
+        e.preventDefault()
+        alert("La contraseña debe tener al menos 8 caracteres")
+        return
+      }
+
+      // Validar que las contraseñas coincidan
+      if (password !== confirmPassword) {
+        e.preventDefault()
+        alert("Las contraseñas no coinciden")
+        return
+      }
+
+      // Validar formato de teléfono (10 dígitos)
+      const telefonoRegex = /^\d{10}$/
+      if (!telefonoRegex.test(telefono)) {
+        e.preventDefault()
+        alert("Por favor ingrese un número de teléfono válido (10 dígitos)")
+        return
+      }
+
       showLoading()
-      setTimeout(() => {
-        hideLoading()
-        callback()
-      }, duration)
-    }
-  
-    // Handle login form submission
-    if (loginForm) {
-      loginForm.addEventListener("submit", (e) => {
-        e.preventDefault()
-  
-        // Get form data
-        const username = document.getElementById("username").value
-        const password = document.getElementById("password").value
-  
-        // Simulate API call
-        simulateLoading(() => {
-          // Here you would typically validate credentials with your backend
-          // For demo purposes, we'll just redirect to dashboard
-          window.location.href = "vista/dashboard.html"
-        })
-      })
-    }
-  
-    // Handle registration form submission
-    if (registerForm) {
-      registerForm.addEventListener("submit", (e) => {
-        e.preventDefault()
-  
-        // Get form data
-        const fullname = document.getElementById("fullname").value
-        const email = document.getElementById("email").value
-        const username = document.getElementById("username").value
-        const password = document.getElementById("password").value
-        const confirmPassword = document.getElementById("confirm-password").value
-  
-        // Basic validation
-        if (password !== confirmPassword) {
-          alert("Las contraseñas no coinciden")
-          return
-        }
-  
-        // Simulate API call
-        simulateLoading(() => {
-          // Here you would typically send registration data to your backend
-          // For demo purposes, we'll just redirect to login
-          window.location.href = "login.html"
-        })
-      })
-    }
-  
-    // Show loading overlay on page navigation
-    document.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", (e) => {
-        // Only show loading for internal links
-        if (link.href && link.href.startsWith(window.location.origin)) {
-          e.preventDefault()
-          simulateLoading(() => {
-            window.location.href = link.href
-          })
-        }
-      })
     })
-  
-    // Handle browser back/forward buttons
-    window.addEventListener("popstate", () => {
-      simulateLoading(() => {
-        window.location.reload()
-      })
+  }
+
+  // Validación del formulario de login
+  if (loginForm) {
+    loginForm.addEventListener("submit", () => {
+      showLoading()
+    })
+  }
+
+  // Mostrar overlay de carga en navegación
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (link.href && !link.href.includes("#")) {
+        showLoading()
+      }
     })
   })
-  
-  
+})
+
